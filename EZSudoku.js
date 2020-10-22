@@ -1,8 +1,25 @@
-var board = [
+/*var board = [
     [4, 3, 0, 0],
     [1, 2, 3, 0],
     [0, 0, 2, 0],
     [2, 1, 0, 0]
+]*/
+/*var board = [
+    [1, 0, 0, 0],
+    [3, 2, 0, 4],
+    [2, 0, 0, 1],
+    [0, 0, 3, 0]
+]*/
+var board = [
+    [0, 0, 0, 2, 6, 0, 7, 0, 1],
+    [6, 8, 0, 0, 7, 0, 0, 9, 0],
+    [1, 9, 0, 0, 0, 4, 5, 0, 0],
+    [8, 2, 0, 1, 0, 0, 0, 4, 0],
+    [0, 0, 4, 6, 0, 2, 9, 0, 0],
+    [0, 5, 0, 0, 0, 3, 0, 2, 8],
+    [0, 0, 9, 3, 0, 0, 0, 7, 4],
+    [0, 4, 0, 0, 5, 0 ,0, 3, 6],
+    [7, 0, 3, 0, 1, 8, 0, 0, 0]
 ]
 function solver (board){
     var positionIndex = 0;
@@ -50,7 +67,13 @@ function solver (board){
         }
     }
 }
-solver(board);
+console.log('Input:');
 console.log(board);
-solver(board);
+function stillIncomplete(board, blank) {
+    return board.some(board => board.includes(blank));
+}
+while (stillIncomplete(board, 0)){
+    solver(board);
+}
+console.log('Solution:');
 console.log(board);
