@@ -23,7 +23,7 @@ var t0 = performance.now()
     [0, 4, 0, 0, 5, 0 ,0, 3, 6],
     [7, 0, 3, 0, 1, 8, 0, 0, 0]
 ]*/
-/*var board = [   //hard 1
+var board = [   //hard 1
     [0, 0, 0, 0, 0, 0, 0, 0, 2],
     [0, 0, 0, 0, 0, 0, 9, 4, 0],
     [0, 0, 3, 0, 0, 0, 0, 0, 5],
@@ -33,8 +33,8 @@ var t0 = performance.now()
     [0, 0, 0, 7, 0, 6, 0, 0, 0],
     [0, 0, 0, 9, 0, 0 ,0, 2, 0],
     [4, 0, 8, 5, 0, 0, 3, 6, 0]
-]*/
-/*var board = [   //hard 2
+]
+var board = [   //hard 2
     [0, 7, 0, 0, 1, 0, 0, 2, 0],
     [5, 0, 0, 0, 2, 7, 0, 0, 1],
     [0, 0, 2, 5, 0, 8, 0, 0, 4],
@@ -44,8 +44,8 @@ var t0 = performance.now()
     [3, 0, 0, 0, 0, 0, 0, 0, 9],
     [0, 2, 0, 7, 5, 0 ,0, 0, 0],
     [0, 0, 0, 2, 3, 0, 4, 8, 0]
-]*/
-var board = [   //demonly headteacher 1
+]
+/*var board = [   //demonly headteacher 1
     [0, 0, 7, 3, 0, 0, 2, 0, 5],
     [0, 0, 4, 0, 0, 9, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 7, 6, 0],
@@ -55,18 +55,7 @@ var board = [   //demonly headteacher 1
     [0, 2, 0, 0, 0, 1, 4, 0, 0],
     [0, 0, 0, 8, 0, 0 ,0, 3, 7],
     [0, 0, 0, 0, 0, 5, 0, 0, 0]
-]
-var board = [   //demonly headteacher 1
-    [0, 0, 7, 3, 0, 0, 2, 0, 5],
-    [0, 0, 4, 0, 0, 9, 8, 1, 3],
-    [0, 0, 0, 0, 0, 0, 7, 6, 0],
-    [4, 0, 0, 0, 0, 0, 0, 7, 8],
-    [0, 1, 0, 5, 0, 0, 0, 0, 2],
-    [0, 0, 8, 0, 0, 6, 1, 5, 0],
-    [0, 2, 0, 0, 0, 1, 4, 8, 0],
-    [0, 0, 0, 8, 0, 0 ,5, 3, 7],
-    [0, 0, 0, 0, 0, 5, 0, 2, 1]
-]
+]*/
 /*var board = [
     [0, 0, 4, 0],
     [1, 0, 0, 0],
@@ -115,9 +104,6 @@ function solver (board){
                 possibleValues = possibleValues.map(function(item){
                     return item +1;
                 });
-                /*for (let z = 0; z < board.length; z++){         //filling the possibleEntries array with all possible entries at positionIndex cell
-                    possibleEntries[positionIndex][z] = z+1;
-                }*/
                 for (let sameRow = 0; sameRow < board.length; sameRow++){       //check cells with the same row as positionIndex for their values,
                     if (board[x][sameRow]){                                     //and if found, remove them from possibleEntries of that cell
                         if (possibleEntries[positionIndex].length === 1){
@@ -152,49 +138,44 @@ function solver (board){
                         possibleEntries[positionIndex].splice(possibleEntries[positionIndex].indexOf(board[Math.floor(quadrants[sameQuad][sameSquare] / board.length)][Math.floor(quadrants[sameQuad][sameSquare] % board.length)]), 1);
                     }
                 }
-                if(possibleEntries[positionIndex].length != 1){
+               if(possibleEntries[positionIndex].length != 1){
                     for (let sameSquare = 0; sameSquare < board.length; sameSquare++){
                         if (quadrants[sameQuad][sameSquare] === positionIndex){
-                            //console.log('ehehe');
                             continue;
                         }
                         possibleValues = subtractTwoArrays(possibleValues,possibleEntries[quadrants[sameQuad][sameSquare]]);
-                        //console.log(possibleValues);
-                        //console.log(quadrants[sameQuad][sameSquare] + possibleEntries[quadrants[sameQuad][sameSquare]]);
                     }
                     if(possibleValues.length === 1){
-                        //console.log('hihi');
+                        possibleEntries[positionIndex] = possibleValues;
+                    }
+                    var possibleValues = Array.from(Array(board.length).keys());
+                    possibleValues = possibleValues.map(function(item){
+                        return item +1;
+                    });
+                    for (let sameColumn = 0; sameColumn < board.length; sameColumn++){
+                        if (sameColumn * board.length + y === positionIndex){
+                            continue;  
+                        }
+                        possibleValues = subtractTwoArrays(possibleValues,possibleEntries[sameColumn * board.length + y]);
+                    }
+                    if(possibleValues.length === 1){
+                        possibleEntries[positionIndex] = possibleValues;
+                    }
+                    var possibleValues = Array.from(Array(board.length).keys());
+                    possibleValues = possibleValues.map(function(item){
+                        return item +1;
+                    });
+                    for (let sameRow = 0; sameRow < board.length; sameRow++){
+    
+                        if (x * board.length + sameRow === positionIndex){
+                            continue;  
+                        }
+                        possibleValues = subtractTwoArrays(possibleValues,possibleEntries[x * board.length + sameRow]);
+                    }
+                    if(possibleValues.length === 1){
                         possibleEntries[positionIndex] = possibleValues;
                     }
                 }
-                    /*for (let a = 0; a < board.length; a++){          //to check each cell in same square for their possible entries
-                    //console.log('checking hard');
-                    if(positionIndex === quadrants[sameQuad][a]){
-                        continue;
-                    }
-                    if(possibleValues.length === 1){
-                        possibleEntries[positionIndex] = possibleValues;
-                        break;
-                    }
-                    for (let b = 0; b < possibleEntries[quadrants[sameQuad][x]].length; b ++){
-                        //console.log('checking for' )
-                        if (possibleValues.includes(possibleEntries[quadrants[sameQuad][a]][b])){
-                            possibleValues.splice(possibleValues.indexOf(possibleEntries[quadrants[sameQuad][a]][b]), 1);
-                           //console.log('removed ' + possibleEntries[quadrants[sameQuad][a]][b] + ' at ' + positionIndex);
-                            //console.log(possibleValues);
-                        }
-                    }
-                    //if(possibleValues.includes(allEntries)){
-                    //    possibleValues.splice(possibleValues.indexOf(allEntries));
-                    //}
-                    //if(possibleEntries[quadrants[sameQuad][x]].includes(allEntries)){
-                    //   z++;
-                   //}
-                }*/
-                
-            }
-            //console.log(possibleValues);
-            //console.log('will add');
             positionIndex ++;
         }    
     }
@@ -203,10 +184,7 @@ function solver (board){
             board[Math.floor(a / board.length)][a % board.length] = possibleEntries[a][0];
        }
     }
-    //console.log('new board here');
-    //console.log(board);
-}
-var sss = 0;
+}}
 var quadrants = new Array (board.length);
 for (let x = 0, points = 0; x < board.length; x++){         //group cell indexes that belong to each quadrant
     quadrants[x] = new Array (board.length);
@@ -234,16 +212,50 @@ function stillIncomplete(board, blank) {
 }
 var sameQuad = 0;
 var timeout = 0;
+var brute = false;
 while (stillIncomplete(board, 0)){
-    //console.log('--')
     solver(board);
     timeout ++;
-    if(timeout === 10000){
-        //console.log('Sorry :(');
+    if(timeout === 100){
+        solverFallback(board);
+        brute = true;
         break;
     }
 }
+function isValid(board, row, col, k) {
+    for (let i = 0; i < 9; i++) {
+        const m = 3 * Math.floor(row / 3) + Math.floor(i / 3);
+        const n = 3 * Math.floor(col / 3) + i % 3;
+        if (board[row][i] == k || board[i][col] == k || board[m][n] == k) {
+          return false;
+        }
+    }
+    return true;
+}
+function solverFallback(data) {
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (data[i][j] == 0) {
+        for (let k = 1; k <= 9; k++) {
+          if (isValid(data, i, j, k)) {
+            data[i][j] = k;
+          if (solverFallback(data)) {
+           return true;
+          } else {
+           data[i][j] = 0;
+          }
+         }
+       }
+       return false;
+     }
+   }
+ }
+ return true;
+}
 console.log('Solution:');
 console.log(board);
-var t1 = performance.now()
-console.log("That took " + (t1 - t0) + " milliseconds and " + timeout + ' tries.')
+var t1 = performance.now();
+console.log("That took " + (t1 - t0) + " milliseconds and " + timeout + ' tries.');
+if (brute){
+    console.log("Solved using backtracking.")
+}
