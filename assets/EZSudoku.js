@@ -1,4 +1,102 @@
-var board = [   //hard 2
+var board = [];
+var row = 0;
+var column = 0;
+var sameQuad = 0;
+var timeout = 0;
+var brute = false;
+var quadrants;
+var positionIndex = 0;
+var possibleEntries = [];
+document.querySelector('#solve').addEventListener('click', function() {
+    if (document.querySelectorAll('div.gameCellActive').length){
+        document.querySelector('div.gameCellActive').setAttribute('class', 'gameCell');
+    }
+    if (Math.sqrt(document.querySelectorAll('div.gameCell').length) === 9){
+        board = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
+        var cells = document.querySelectorAll('div.gameCell');
+        for(const cell of cells) {
+            if (column === 9){
+                column = 0;
+                row ++;
+            }
+            if (row === 9 && column === 9){
+                break;
+            }
+            if (cell.innerHTML === '&nbsp;'){
+                board[row][column] = 0;
+            } else {
+                board[row][column] = parseFloat(cell.innerHTML);
+            }
+            column ++;
+        }
+    }
+    row = 0;
+    column = 0;
+    positionIndex = 0;
+    possibleEntries = [];
+    for (let x = 0; x < Math.pow(board.length,2); x++) {        //instantiating an array with board.length^2 length to store possible entries for each cell
+        possibleEntries[x] = new Array();
+    }
+    for (let x = 0; x < board.length; x++){         //for loop for the rows
+        for (let y = 0; y< board.length; y++){      //for loop for the columns
+            if (board[x][y]){                       //goes here if cell is a given
+                possibleEntries[positionIndex][0] = board[x][y];
+                positionIndex ++;
+                continue;
+            }else{
+                for (let z = 0; z < board.length; z++){         //filling the possibleEntries array with all possible entries at positionIndex cell
+                    possibleEntries[positionIndex][z] = z+1;
+                }
+                positionIndex ++;
+            }
+        }
+    }
+    quadrants = new Array (board.length);
+    for (let x = 0, points = 0; x < board.length; x++){         //group cell indexes that belong to each quadrant
+        quadrants[x] = new Array (board.length);
+        for (let y = 0, pointsInside = points; y < board.length; y++){
+            if(!(y)){
+                quadrants[x][y] = pointsInside;
+                continue;
+            }
+                if((pointsInside + 1) % Math.sqrt(board.length) === 0){
+
+                    pointsInside += ((Math.sqrt(board.length)) * (Math.sqrt(board.length) - 1) + 1);
+                }else {
+                    pointsInside++;
+                }
+                quadrants[x][y] = pointsInside;
+        }
+        if((x + 1) % Math.sqrt(board.length) === 0){
+            points += ((Math.pow(Math.sqrt(board.length),3)) - ((Math.sqrt(board.length)) * (Math.sqrt(board.length) - 1)));
+            continue;
+        }
+        points += Math.sqrt(board.length);
+    }
+    while (stillIncomplete(board, 0)){
+        solver(board);
+        timeout ++;
+        if(timeout === 30){
+            solverFallback(board);
+            brute = true;
+            break;
+        }
+    }
+    console.log(board);
+    for(const cell of cells) {
+        if (column === 9){
+            column = 0;
+            row ++;
+        }
+        if (row === 9 && column === 9){
+            break;
+        }
+        cell.innerHTML = board[row][column];
+        column ++;
+    }
+    timeout = 0;
+})
+/*var board = [   //hard 2
     [0, 7, 0, 0, 1, 0, 0, 2, 0],
     [5, 0, 0, 0, 2, 7, 0, 0, 1],
     [0, 0, 2, 5, 0, 8, 0, 0, 4],
@@ -8,7 +106,7 @@ var board = [   //hard 2
     [3, 0, 0, 0, 0, 0, 0, 0, 9],
     [0, 2, 0, 7, 5, 0 ,0, 0, 0],
     [0, 0, 0, 2, 3, 0, 4, 8, 0]
-]
+]*/
 function subtractTwoArrays(arr1,arr2){
     for(x = 0; x < arr2.length; x++){
         if(arr1.includes(arr2[x])){
@@ -16,25 +114,6 @@ function subtractTwoArrays(arr1,arr2){
         }
     }
     return arr1;
-}
-var positionIndex = 0;
-var possibleEntries = [];
-for (let x = 0; x < Math.pow(board.length,2); x++) {        //instantiating an array with board.length^2 length to store possible entries for each cell
-    possibleEntries[x] = new Array();
-}
-for (let x = 0; x < board.length; x++){         //for loop for the rows
-    for (let y = 0; y< board.length; y++){      //for loop for the columns
-        if (board[x][y]){                       //goes here if cell is a given
-            possibleEntries[positionIndex][0] = board[x][y];
-            positionIndex ++;
-            continue;
-        }else{
-            for (let z = 0; z < board.length; z++){         //filling the possibleEntries array with all possible entries at positionIndex cell
-                possibleEntries[positionIndex][z] = z+1;
-            }
-            positionIndex ++;
-        }
-    }
 }
 function solver (board){
     var positionIndex = 0;
@@ -131,42 +210,8 @@ function solver (board){
         }
     }
 }
-var quadrants = new Array (board.length);
-for (let x = 0, points = 0; x < board.length; x++){         //group cell indexes that belong to each quadrant
-    quadrants[x] = new Array (board.length);
-    for (let y = 0, pointsInside = points; y < board.length; y++){
-        if(!(y)){
-            quadrants[x][y] = pointsInside;
-            continue;
-        }
-            if((pointsInside + 1) % Math.sqrt(board.length) === 0){
-
-                pointsInside += ((Math.sqrt(board.length)) * (Math.sqrt(board.length) - 1) + 1);
-            }else {
-                pointsInside++;
-            }
-            quadrants[x][y] = pointsInside;
-    }
-    if((x + 1) % Math.sqrt(board.length) === 0){
-        points += ((Math.pow(Math.sqrt(board.length),3)) - ((Math.sqrt(board.length)) * (Math.sqrt(board.length) - 1)));
-        continue;
-    }
-    points += Math.sqrt(board.length);
-}
 function stillIncomplete(board, blank) {
     return board.some(board => board.includes(blank));
-}
-var sameQuad = 0;
-var timeout = 0;
-var brute = false;
-while (stillIncomplete(board, 0)){
-    solver(board);
-    timeout ++;
-    if(timeout === 30){
-        solverFallback(board);
-        brute = true;
-        break;
-    }
 }
 function isValid(board, row, col, k) {      // this is the backtracking method by M. Ramezani of Stack Overflow
     for (let i = 0; i < 9; i++) {
@@ -198,8 +243,6 @@ function solverFallback(board) {
     }
 return true;
 }       // backtracking method ends here
-console.log('Solution:');
-console.log(board);
 if (brute){
     console.log("Solved using backtracking.")
 }
