@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+html {
+    background-image: linear-gradient(#77216F, #5E2750);
+    font-size:16px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#mainContainer {
+   display: grid;
+   grid-template-columns: 10% 80% 10%;
+   min-height:calc(100% - 1em);
+}
+#bodyContainer {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: center;
+    padding-top:10%;
+}
+#logo {
+    width:100%;
+    filter: drop-shadow(.5em .5em 0.5em #5E2750);
+}
+#boardSelector {
+    margin-top:5em;
+    margin-bottom:5em;
+}
+#footer {
+    font-size: 48px;
+    background-image: linear-gradient(#ffcc87, #FDBD60);
+    color: #77216F;
+    text-align: center;
+    padding:15px;
+}
+#controlBox{
+    width:100%;
+}
+button {
+    font-weight: 700;
+    width:25%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: .5em;
+    background-image: linear-gradient(#fbb040, #ffcc87);
+    border:none;
+    border-radius: 2em;
+    font-size: 2em;
+    padding:10px;
+    color: #77216F;
+    box-shadow:  8px 8px 16px #5f1a59, 
+    -8px -8px 16px #8f2885;
+}
+#solve {
+    margin:0;
+    margin-top:.5em;
+    font-size: 5em;
+    width:100%;
+    font-weight: 900;
+}
+.numpad{
+    color: #fbb040;
+    background-image: none;
+    background-color: transparent;
+    border: .09em solid #fbb040;
+    border-radius: .5em;
+    margin-left: 2%;
+    margin-right: 2%;
+    width:32%;
+    font-weight: 900;
+    font-size:4em;
+}
+#gameboard{
+    margin-top:3em;
+}
+.gameCell{
+    display:inline-block;
+    text-align: center;
+    color: #fbb040;
+    background-image: none;
+    background-color: transparent;
+    border: .042em solid #fbb040;
+    width:11.11%;
+    padding:.2em;
+    font-size:3em;
+}
+h1{
+    font-size:3em;
+    font-weight: 700;
+    color: #ffcc87;
+    filter: drop-shadow(.1em .1em 0.5em #5E2750);
+}
