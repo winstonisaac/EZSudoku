@@ -59,8 +59,9 @@ button {
 }
 #solve {
     margin:0;
+    padding:.5em;
     margin-top:.5em;
-    font-size: 5em;
+    font-size: 4em;
     width:100%;
     font-weight: 900;
 }
@@ -70,9 +71,9 @@ button {
     background-color: transparent;
     border: .09em solid #fbb040;
     border-radius: .5em;
-    margin-left: 2%;
-    margin-right: 2%;
-    width:32%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width:18.4%;
     font-weight: 900;
     font-size:4em;
 }
@@ -103,6 +104,44 @@ button {
     width:11.11%;
     padding:.2em;
     font-size:3em;
+}
+#errorContainer{
+    display: none;
+    grid-template-columns: 12.5% 75% 12.5%;
+    z-index: 100;
+    font-size: 6em;
+    position: fixed;
+    width:100vw;
+    height:100vh;
+    background-color:#00000090;
+    align-items: center;
+}
+#errorNature{
+    color: #77216F;
+    font-size: .5em;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: center;
+    border-radius: 1.5em;
+    background-image: linear-gradient(#fbb040, #ffcc87);
+    padding: 1em;
+    line-height:1.3;
+}
+#errorHeading{
+    font-size: 1.5em;
+    color: #77216F;
+    font-weight:900;
+}
+#errorOkay{
+    font-size:1em;
+    text-align: center;
+    color: #fbb040;
+    width:80%;
+    margin:0;
+    margin-top:.5em;
+    background-image: linear-gradient(#77216F, #5E2750);
+    box-shadow:  8px 8px 16px #d5a25b, 
+                -8px -8px 16px #ffe07d;
 }
 h1{
     font-size:3em;

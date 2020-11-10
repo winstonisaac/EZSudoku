@@ -3,6 +3,7 @@ var row = 0;
 var column = 0;
 var sameQuad = 0;
 var timeout = 0;
+var entries = 0;
 var brute = false;
 var quadrants;
 var positionIndex = 0;
@@ -23,6 +24,7 @@ document.querySelector('#solve').addEventListener('click', function() {
                 break;
             }
             if (cell.innerHTML === '&nbsp;'){
+                entries ++;
                 board[row][column] = 0;
             } else {
                 board[row][column] = parseFloat(cell.innerHTML);
@@ -34,6 +36,12 @@ document.querySelector('#solve').addEventListener('click', function() {
     column = 0;
     positionIndex = 0;
     possibleEntries = [];
+    if (entries > 64){
+        console.log(entries);
+        alert('haha bobo');
+        entries = 0;
+        return;
+    }
     for (let x = 0; x < Math.pow(board.length,2); x++) {        //instantiating an array with board.length^2 length to store possible entries for each cell
         possibleEntries[x] = new Array();
     }
@@ -94,6 +102,7 @@ document.querySelector('#solve').addEventListener('click', function() {
         cell.innerHTML = board[row][column];
         column ++;
     }
+    entries = 0;
     timeout = 0;
 })
 /*var board = [   //hard 2
