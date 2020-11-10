@@ -36,9 +36,14 @@ document.querySelector('#solve').addEventListener('click', function() {
     column = 0;
     positionIndex = 0;
     possibleEntries = [];
-    if (entries > 64){
-        console.log(entries);
-        alert('haha bobo');
+    if (entries > 64){              //error handling for less than 17 entries
+        document.querySelector('#errorContainer').style.display = 'initial';
+        document.querySelector('#errorMessage').textContent = 'The board has too few entries.';
+        document.querySelector('body').style.overflow = 'hidden';
+        document.querySelector('#errorOkay').addEventListener('click', function() {
+            document.querySelector('#errorContainer').style.display = 'none';
+            document.querySelector('body').style.overflow = 'initial';
+        })
         entries = 0;
         return;
     }

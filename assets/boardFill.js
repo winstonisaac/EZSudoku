@@ -18,4 +18,4 @@ for(const input of inputs) {
             }
         }
     })
-}w
+}
