@@ -15,5 +15,8 @@ Sudoku is a logic-based, combinatorial number-placement puzzle. In classic sudok
 * M. Ramezani from Stack Overflow for the [backtracking code](https://stackoverflow.com/a/55757694) I used as a fallback method.
 * [neumorphism.io](https://neumorphism.io/) for their box-shadow generator.
 
+## Contact
+* For any concerns related to EZSudoku, please contact me: [marc@winstonisaac.com](mailto:marc@winstonisaac.com)
+
 ## License
 [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)

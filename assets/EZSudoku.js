@@ -38,7 +38,11 @@ document.querySelector('#solve').addEventListener('click', function() {
     possibleEntries = [];
     if (entries > 64){              //error handling for less than 17 entries
         document.querySelector('#errorContainer').style.display = 'initial';
-        document.querySelector('#errorMessage').textContent = 'The board has too few entries.';
+        if (entries === 81){
+            document.querySelector('#errorMessage').textContent = 'The board has no entries.';
+        }else {
+            document.querySelector('#errorMessage').textContent = 'The board has too few entries.';
+        }
         document.querySelector('body').style.overflow = 'hidden';
         document.querySelector('#errorOkay').addEventListener('click', function() {
             document.querySelector('#errorContainer').style.display = 'none';
