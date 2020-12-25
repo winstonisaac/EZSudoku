@@ -4,8 +4,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/style.css">
         <script src="https://kit.fontawesome.com/38ee9eeeab.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/EZSudoku.js" async></script>
-        <script type="text/javascript" src="assets/boardFill.js" async></script>
+        <script type="text/javascript" src="assets/EZSudoku.js" defer></script>
+        <script type="text/javascript" src="assets/boardFill.js" defer></script>
     </head>
     <body>
         <div id="mainContainer">
@@ -18,17 +18,35 @@
             </div>
             <div id="bodyContainer">
                 <img id="logo" src="assets/ezsudoku.svg">
-                <div class="gameBoard" id="9-board">
-                    <div class="gameCell" style="border-top-width:.08em;border-left-width:.08em;border-radius:.5em 0 0 0">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;">&nbsp;</div><div class="gameCell" style="border-top-width:.08em;border-right-width:.08em;border-radius:.0 .5em 0 0">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em;">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell">&nbsp;</div><div class="gameCell" style="border-right-width:.08em;">&nbsp;</div>
-                    <div class="gameCell" style="border-left-width:.08em; border-bottom-width:.08em; border-radius:0 0 0 .5em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-bottom-width:.08em;">&nbsp;</div><div class="gameCell" style="border-right-width:.08em; border-bottom-width:.08em; border-radius:0 0 .5em 0">&nbsp;</div>
-                </div>
+                <table>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </table>
                 <div id="controlBox" id="9-control">
                     <button type="button" class="numpad" style="margin-left:0;">1</button><button type="button" class="numpad">2</button><button type="button" class="numpad">3</button><button type="button" class="numpad">4</button><button type="button" class="numpad" style="margin-right:0;">5</button>
                     <button type="button" class="numpad" style="margin-left:0;">6</button><button type="button" class="numpad">7</button><button type="button" class="numpad">8</button><button type="button" class="numpad">9</button><button type="button" class="numpad" id ="delpad" style="margin-right:0;">&nbsp;<i class="fas fa-times-circle"></i>&nbsp;</button>

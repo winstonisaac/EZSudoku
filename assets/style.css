@@ -83,27 +83,8 @@ button {
     box-shadow:  8px 8px 16px #5f1a59, 
                 -8px -8px 16px #8f2885;
 }
-.gameCell{
-    display:inline-block;
-    text-align: center;
-    color: #fbb040;
-    background-image: none;
-    background-color: transparent;
-    border: .042em solid #fbb040;
-    width:11.11%;
-    padding:.2em;
-    font-size:3em;
-}
-.gameCellActive{
-    display:inline-block;
-    text-align: center;
-    color: #fbb040;
-    background-image: none;
+#gameCellActive{
     background-color:#fbb04035;
-    border: .042em solid #fbb040;
-    width:11.11%;
-    padding:.2em;
-    font-size:3em;
 }
 #errorContainer{
     display: none;
@@ -148,4 +129,47 @@ h1{
     font-weight: 700;
     color: #ffcc87;
     filter: drop-shadow(.1em .1em 0.5em #5E2750);
+}
+table {
+    border-radius:2em;
+    margin-top: 2rem;
+    width:100%;
+    border-spacing:0;
+    box-shadow: 8px 8px 16px #5f1a59, -8px -8px 16px #8f2885;
+}
+td {
+    width: 8.88vw;
+    border: 2px solid #fbb040;
+}
+tr {
+    text-align: center;
+    color: #fbb040;
+    width:11.11%;
+    padding:.2em;
+    font-size:3em;
+    height: 8.88vw;
+}
+td:nth-child(1){
+    border-left: 4px solid #fbb040;
+}
+td:nth-child(9){
+    border-right: 4px solid #fbb040;
+}
+tr:nth-child(1)>td:nth-child(n+1):nth-child(-n+9){
+    border-top: 4px solid #fbb040;
+}
+tr:nth-child(9)>td:nth-child(n+1):nth-child(-n+9){
+    border-bottom: 4px solid #fbb040;
+}
+tr:nth-child(1)>td:nth-child(1){
+    border-radius:.5em 0 0 0;
+}
+tr:nth-child(9)>td:nth-child(1){
+    border-radius:0 0 0 .5em;
+}
+tr:nth-child(1)>td:nth-child(9){
+    border-radius:0 .5em 0 0;
+}
+tr:nth-child(9)>td:nth-child(9){
+    border-radius:0 0 .5em 0;
 }
