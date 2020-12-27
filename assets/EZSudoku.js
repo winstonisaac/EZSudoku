@@ -9,12 +9,11 @@ var quadrants;
 var positionIndex = 0;
 var possibleEntries = [];
 document.querySelector('#solve').addEventListener('click', function() {
-    if (document.querySelectorAll('div.gameCellActive').length){
-        document.querySelector('div.gameCellActive').setAttribute('class', 'gameCell');
-    }
-    if (Math.sqrt(document.querySelectorAll('div.gameCell').length) === 9){
+    if (document.getElementById('gameCellActive'))
+        document.getElementById('gameCellActive').id = '';
+    if (document.getElementById('9-board').style.display !== 'none'){
         board = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
-        var cells = document.querySelectorAll('div.gameCell');
+        var cells = document.getElementsByTagName('td');
         for(const cell of cells) {
             if (column === 9){
                 column = 0;
@@ -23,7 +22,7 @@ document.querySelector('#solve').addEventListener('click', function() {
             if (row === 9 && column === 9){
                 break;
             }
-            if (cell.innerHTML === '&nbsp;'){
+            if (cell.textContent === ''){
                 entries ++;
                 board[row][column] = 0;
             } else {
@@ -99,7 +98,7 @@ document.querySelector('#solve').addEventListener('click', function() {
             break;
         }
     }
-    console.log(board);
+    cells = document.getElementsByTagName('td');
     for(const cell of cells) {
         if (column === 9){
             column = 0;
@@ -108,7 +107,7 @@ document.querySelector('#solve').addEventListener('click', function() {
         if (row === 9 && column === 9){
             break;
         }
-        cell.innerHTML = board[row][column];
+        cell.textContent = board[row][column];
         column ++;
     }
     entries = 0;

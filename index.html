@@ -1,24 +1,23 @@
 <html>
     <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>   
         <title>EZSudoku</title>
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/style.css">
-        <script src="https://kit.fontawesome.com/38ee9eeeab.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/EZSudoku.js" defer></script>
-        <script type="text/javascript" src="assets/boardFill.js" defer></script>
     </head>
     <body>
         <div id="mainContainer">
             <div id="errorContainer">
                 <div id="errorNature">
-                    <span id="errorHeading"><i class="fas fa-exclamation-circle"></i>&nbsp;Error</span><br>
+                    <span id="errorHeading">Error</span><br>
                     <span id="errorMessage"><br></span>
                     <button type="button" id="errorOkay">Try again</button>
                 </div>
             </div>
             <div id="bodyContainer">
                 <img id="logo" src="assets/ezsudoku.svg">
-                <table>
+                <table id='9-board'>
                     <tr>
                         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
@@ -49,7 +48,7 @@
                 </table>
                 <div id="controlBox" id="9-control">
                     <button type="button" class="numpad" style="margin-left:0;">1</button><button type="button" class="numpad">2</button><button type="button" class="numpad">3</button><button type="button" class="numpad">4</button><button type="button" class="numpad" style="margin-right:0;">5</button>
-                    <button type="button" class="numpad" style="margin-left:0;">6</button><button type="button" class="numpad">7</button><button type="button" class="numpad">8</button><button type="button" class="numpad">9</button><button type="button" class="numpad" id ="delpad" style="margin-right:0;">&nbsp;<i class="fas fa-times-circle"></i>&nbsp;</button>
+                    <button type="button" class="numpad" style="margin-left:0;">6</button><button type="button" class="numpad">7</button><button type="button" class="numpad">8</button><button type="button" class="numpad">9</button><button type="button" class="numpad" id ="delpad" style="margin-right:0;">X</button>
                     <button type="button" id="solve">Check for a solution</button>
                 </div>
                 <div id="boardSelector">
@@ -60,7 +59,9 @@
             </div>
         </div>
         <div id="footer">
-            <a href="https://github.com/winstonisaac/EZSudoku" target="_blank"><i class="fab fa-github-alt"></i></a>
+            <a href="https://github.com/winstonisaac/EZSudoku" target="_blank">Source Code</a>
         </div>
+        <script type="text/javascript" src="assets/EZSudoku.js"></script>
+        <script type="text/javascript" src="assets/boardFill.js"></script>
     </body>
 </html>

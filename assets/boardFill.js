@@ -1,20 +1,23 @@
-var cells = document.getElementsByTagName('td');
-for(const cell of cells) {
+let cells = document.getElementsByTagName('td');    
+for(let cell of cells) {
+    cell.onclick = () => {};
     cell.onclick = function() {
-        if (document.getElementById('gameCellActive'))
-            document.getElementById('gameCellActive').id = '';
+        let activeCell = document.getElementById('gameCellActive');
+        if (activeCell)
+            activeCell.id = '';
         this.id = 'gameCellActive';
     };
 }
-var inputs = document.querySelectorAll('button.numpad');
-for(const input of inputs) {
+let inputs = document.querySelectorAll('button.numpad');
+for(let input of inputs) {
+    input.onclick = () => {};
     input.onclick = function() {
-        if (document.getElementById('gameCellActive')){
-            if(input.id === 'delpad'){
-                document.getElementById('gameCellActive').textContent = '';
-            } else{
-                document.getElementById('gameCellActive').textContent = input.textContent;
-            }
+        let activeCell = document.getElementById('gameCellActive');
+        if (activeCell){
+            if(input.id === 'delpad')
+                activeCell.textContent = '';
+            else
+                activeCell.textContent = input.textContent;
         }
     };
 }
