@@ -42,6 +42,7 @@ a {
 }
 #controlBox{
     width:100%;
+    margin-top: 4em;
 }
 button {
     font-weight: 700;
@@ -61,7 +62,7 @@ button {
 #solve {
     margin:0;
     padding:.5em;
-    margin-top:.5em;
+    margin-top:4rem;
     font-size: 4em;
     width:100%;
     font-weight: 900;
@@ -133,14 +134,14 @@ h1{
 }
 table {
     border-radius:2em;
-    margin-top: 2rem;
+    margin-top: 5rem;
     width:100%;
     border-spacing:0;
     box-shadow: 8px 8px 16px #5f1a59, -8px -8px 16px #8f2885;
 }
 td {
     width: 8.88vw;
-    border: 2px solid #fbb040;
+    border: 1.5px solid #fbb040;
 }
 tr {
     text-align: center;
@@ -151,16 +152,22 @@ tr {
     height: 8.88vw;
 }
 td:nth-child(1){
-    border-left: 4px solid #fbb040;
+    border-left: 5px solid #fbb040;
+}
+td:nth-child(3), td:nth-child(6){
+    border-right: 5px solid #fbb040;
 }
 td:nth-child(9){
-    border-right: 4px solid #fbb040;
+    border-right: 5px solid #fbb040;
 }
 tr:nth-child(1)>td:nth-child(n+1):nth-child(-n+9){
-    border-top: 4px solid #fbb040;
+    border-top: 5px solid #fbb040;
+}
+tr:nth-child(3)>td:nth-child(n+1):nth-child(-n+9), tr:nth-child(6)>td:nth-child(n+1):nth-child(-n+9){
+    border-bottom: 5px solid #fbb040;
 }
 tr:nth-child(9)>td:nth-child(n+1):nth-child(-n+9){
-    border-bottom: 4px solid #fbb040;
+    border-bottom: 5px solid #fbb040;
 }
 tr:nth-child(1)>td:nth-child(1){
     border-radius:.5em 0 0 0;
